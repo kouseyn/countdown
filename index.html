@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>New Year Countdown</title>
+	<style>
+		body {
+			background-image: url("https://sozaino.site/wp-content/uploads/2022/03/utyu3.png");
+			color: white;
+			color: white;
+			font-family: sans-serif;
+			height: 100vh;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+		}
+		
+		.timer {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			font-size: 6rem;
+			margin-top: 2rem;
+		}
+		
+		.timer .digit {
+			background-color: rgba(212, 247, 60, 0.342);
+			padding: 1rem;
+			border-radius: 1rem;
+			margin: 0 1rem;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+		}
+		
+		.timer .digit span {
+			font-size: 5rem;
+			margin-bottom: 0.5rem;
+		}
+		
+		.timer .digit small {
+			font-size: 1rem;
+			text-transform: uppercase;
+			letter-spacing: 0.2rem;
+		}
+	</style>
+	
+    <audio controls autoplay loop>
+	<source src="planet countdown.mp3" type="audio/mpeg">
+	Hmm... something seems different. Enjoy a static countdown
+    </audio>
+
+</head>
+<body>
+		<div class="background">
+	<h1>New Year Countdown</h1>
+	<div class="timer">
+		<div class="digit">
+			<span id="days"></span>
+			<small>Days</small>
+		</div>
+		<div class="digit">
+			<span id="hours"></span>
+			<small>Hours</small>
+		</div>
+		<div class="digit">
+			<span id="minutes"></span>
+			<small>Minutes</small>
+		</div>
+		<div class="digit">
+			<span id="seconds"></span>
+			<small>Seconds</small>
+		</div>
+	</div>
+	<div class="stars"></div>
+	<script>
+		// Set the date we're counting down to
+		var countDownDate = new Date("January 1, 2024 00:00:00").getTime();
+
+		// Update the count down every 1 second
+		var x = setInterval(function() {
+
+			// Get today's date and time
+			var now = new Date().getTime();
+			
+			// Find the distance between now and the count down date
+			var distance = countDownDate - now;
+			
+			// Time calculations for days, hours, minutes and seconds
+			var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+			var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+			var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+			var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+			// Display the result in the element with id="demo"
+			document.getElementById('days').innerHTML = days;
+			document.getElementById('hours').innerHTML = hours;
+			document.getElementById('minutes').innerHTML = minutes;
+			document.getElementById('seconds').innerHTML = seconds;
+			
+			// If the count down is finished, write some text
+			if (distance < 0) {
+				clearInterval(x);
+				document.getElementById("timer").innerHTML = "HAPPY NEW YEAR!";
+			}
+		}, 1000);
+	</script>
+</body>
+</html>
